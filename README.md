@@ -1,4 +1,4 @@
-# dokku セットアップ手順
+# dokkuセットアップ手順
 Heroku互換オープンソフトウェア[dokku](https://github.com/dokku/dokku)のセットアップ手順です。
 
 ## 確認した環境
@@ -13,7 +13,7 @@ ssh root@<IPアドレス> -p 22
 ```
 
 ## ubuntuのアップデート
-ubuntuを最新の状態にします。質問が表示された時は「Yキー」または「enterキー」を押下してください。
+ubuntuを最新の状態にします。質問が表示された時は「Yキー」または「enterキー」を押下してください。
 ```shell
 sudo apt update
 sudo apt dist-upgrade
@@ -32,8 +32,8 @@ wget https://raw.githubusercontent.com/dokku/dokku/v0.11.2/bootstrap.sh
 sudo dokku_TAG=v0.11.2 bash bootstrap.sh
 ```
 
-## rootログイン禁止の設定
-dokkuインストール時にdokkuユーザが作成されています。セキュリティ強化のため、dokkuユーザをログインできるようにして、rootユーザをログインできないようにします。
+## rootログイン禁止の設定
+dokkuインストール時にdokkuユーザが作成されています。セキュリティ強化のため、dokkuユーザをログインできるようにして、rootユーザをログインできないようにします。
 ```shell
 mkdir -p /home/dokku/.ssh
 cp /root/.ssh/authorized_keys /home/dokku/.ssh/authorized_keys
@@ -116,7 +116,17 @@ git push -v -f dokku master
 ```
 
 ## TIPS
-- アプリを再起動したい。
+- アプリの再起動
 ```shell
 dokku ps:restart <アプリ名>
+```
+
+- アプリのログ表示　
+```shell
+dokku logs <アプリ名> -t
+```
+
+- 全アプリの表示
+```shell
+dokku apps:list
 ```
